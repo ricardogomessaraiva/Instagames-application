@@ -9,7 +9,9 @@ module.exports.find = function (req, res) {
         res.render('index/login', { errors: validations });
         return;
     }
-    console.log('Acionando API POST url: ' + URL_API);
+
+    console.log('Acionando API POST url --> ' + URL_API + 'api/user');
+
     var request = require('request');
     request({
         url: URL_API + 'api/user',
@@ -20,23 +22,17 @@ module.exports.find = function (req, res) {
         body: req.body,
         json: true
     }, function (error, resp) {
-        if (error) {
-            console.log('erro')
-            res.render('index/login', { errors: [{ msg: 'Falha ao validar o usuário: ' + error }] });
+        if (error) {            
+            res.render('index/login', { errors: [{ msg: 'Falha: ' + error }] });
             return;
         }
 
-        if (resp.statusCode == 500) {
-
+        if (resp.statusCode != 200) {            
             res.render('index/login', { errors: [{ msg: 'Falha ao validar o usuário: ' + resp.body.message }] });
             return;
         }
 
-        if (resp.statusCode == 404) {
-            res.render('index/login', { errors: [{ msg: resp.body.message }] });
-            return;
-        }
-
+        console.log(resp.body);
         req.session.name = resp.body.user.name;
         req.session.username = resp.body.user.username;
 
