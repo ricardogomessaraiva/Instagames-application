@@ -9,7 +9,7 @@ module.exports.find = function (req, res) {
         res.render('index/login', { errors: validations });
         return;
     }
-    
+    console.log('Acionando API POST url: ' + URL_API);
     var request = require('request');
     request({
         url: URL_API + 'api/user',
