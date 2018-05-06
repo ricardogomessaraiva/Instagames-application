@@ -1,4 +1,4 @@
-//const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 module.exports = function () {
     var express = require('express'),
@@ -9,7 +9,7 @@ module.exports = function () {
 
     //public vars
     global.CONFIG = require('config');
-    global.URL_API = process.env.NODE_ENV == 'development' ? CONFIG.get('Config.development.url_api') : CONFIG.get('Config.production.url_api');    
+    global.URL_API = process.env.NODE_ENV == 'development' ? CONFIG.get('Config.development.url_api') : CONFIG.get('Config.production.url_api');
 
     app.set('view engine', 'ejs');
     app.set('views', './app/views/');
@@ -38,7 +38,7 @@ module.exports = function () {
     require('../app/routes/publish-route')(app);
     require('../app/routes/about-route')(app);
 
-    app.listen(5000);
-    console.log("Application server is up on port 5000 at " + Date());
+    app.listen(PORT);
+    console.log("Application server is up on port " + PORT + " at " + Date());
 
 };
