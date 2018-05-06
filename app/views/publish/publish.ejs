@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+
+	<title>Instagram Clone - WEB</title>
+
+	<!-- JQuery -->
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+	<!-- bootstrap - link cdn -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.jquery.js"></script>
+
+	<!-- incluindo css -->
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="col-md-8">
+				<div class="container-fluid">
+					<img alt="Instagram Clone - Versão WEB" style="width: 110px; height: 60px" src="images/controller.jpeg" class="logo2">
+					<img alt="Instagram Clone - Versão WEB" style="width: 250px; height: 80px" src="images/logo_games.png" class="logo2">
+				</div>
+			</div>
+			<br>
+			<div class="col-md-4">
+				<div class="container-fluid">
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+						 aria-expanded="true">
+							Olá,
+							<%= user%>
+								<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li>
+								<a href="#">Publicar</a>
+							</li>
+							<li>
+								<a href="/about">Sobre</a>
+							</li>
+							<li>
+								<a href="home/deslogar">Desconectar</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container" id="container_form">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<h4>Publicar um jogo</h4>
+			</div>
+
+			<form method="post" action="/publish" encType="multipart/form-data">
+				<div class="panel-body">
+					<div class="form-group">
+						<div>
+							<span>Imagem
+								<spa style="font-size: 11px;">
+									<i>1024x768</i>
+								</spa>
+							</span>
+
+
+						</div>
+
+						<input type="file" name="img" id="img" class="form-control">
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-lg-2">
+								<span>Plataforma</span>
+								<select class="form-control" id="platform" name="platform">
+									<option>PC</option>
+									<option>Xbox</option>
+									<option>Playstation</option>
+									<option>Mastersystem</option>
+									<option>Nintendo</option>
+									<option>Mega Drive</option>
+									<option>Neo Geo</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-lg-6">
+								<span>Titulo</span>
+								<input type="text" name="title" id="title" value="<%=field.title%>" class="form-control" placeholder="Titulo" autocomplete="off">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<span>Descrição</span>
+						<textarea class="form-control" id="description" name="description"> </textarea>
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-success" id="btn-publicar">Publicar</button>
+						<a class="btn btn-danger" href="/home" role="button">Cancelar</a>
+					</div>
+				</div>
+				<% if(errors.length > 0) {%>
+					<% for(var i in errors) {%>
+						<div class="alert alert-danger" role="alert">
+							<strong>Ops! </strong>
+							<%= errors[i].msg %>
+						</div>
+						<% } } %>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

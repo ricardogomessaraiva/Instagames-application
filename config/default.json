@@ -1,0 +1,10 @@
+{
+    "Config": {
+      "production": {
+        "url_api": "https://vast-dawn-67588.herokuapp.com/"
+      },
+      "development": {
+        "url_api": "http://localhost:5001/"
+      }
+    }
+  }

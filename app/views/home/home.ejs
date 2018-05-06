@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+
+	<title>Instagram Clone - WEB</title>
+
+	<!-- JQuery -->
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+	<!-- bootstrap - link cdn -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	 crossorigin="anonymous"></script>
+
+	<!-- incluindo css -->
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="col-md-8">
+				<div class="container-fluid">
+					<img alt="Instagram Clone - Versão WEB" style="width: 110px; height: 60px" src="images/controller.jpeg" class="logo2">
+					<img alt="Instagram Clone - Versão WEB" style="width: 250px; height: 80px" src="images/logo_games.png" class="logo2">
+				</div>
+			</div>
+			<br>
+			<div class="col-md-4">
+				<div class="container-fluid">
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+						 aria-expanded="true">
+							Olá,
+							<%= user %>
+								<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li>
+								<a href="/publish">Publicar</a>
+							</li>
+							<li>
+								<a href="/about">Sobre</a>
+							</li>
+							<li>
+								<a href="home/deslogar">Desconectar</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container" id="container_form">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<h4>
+					<strong>Jogos</strong>
+				</h4>
+			</div>
+			<%for(var i in posts){%>
+
+				<div class="panel-body">
+					<form>
+						<div class="form-group">
+							<h3>
+								<span class="label label-default">
+									<%=posts[i].platform%>
+								</span>
+								&nbsp;&nbsp;
+								<strong>
+									<%=posts[i].title%>
+								</strong>
+							</h3>
+							<p></p>
+						</div>
+
+						<div class="form-group">
+							<div>
+								<img style="height: 768px; width: 1110px" src="<%=URL_API%>api/posts/image/<%=posts[i].imageName%>">
+							</div>
+							<br>
+
+							<p style="font-style: italic; font-weight: bold">
+								<%=posts[i].description%>
+							</p>
+
+							<div>
+								<label>Por:</label>
+								<span>
+									<%=posts[i].name%> &nbsp;&nbsp;
+										<label>Em: </label>
+										<%=posts[i].createdAt%>
+								</span>
+							</div>
+						</div>
+					</form>
+					<form method="POST" action="/home/feedback">
+						<input type="hidden" name="_id" id="_id" value="<%=posts[i]._id%>">
+						<div class="form-group">
+							<button type="submit" name="feedback" id="feedback" value="liked" class="btn btn-success" aria-label="Left Align">
+								<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">
+									<%=posts[i].likes%>
+								</span>
+							</button>
+
+							<button type="submit" name="feedback" id="feedback" value="unliked" class="btn btn-danger" aria-label="Left Align">
+								<span class="glyphicon glyphicon-thumbs-down" aria-hidden="true">
+									<%=posts[i].dislikes%>
+								</span>
+							</button>
+						</div>
+					</form>
+					<form method="POST" action="/home/comment">
+						<input type="hidden" name="_id" id="_id" value="<%=posts[i]._id%>">
+						<!--Comentar-->
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" name="comment" id="comment" class="form-control" placeholder="Comentar">
+								<span class="input-group-btn">
+									<button class="btn btn-primary" type="submit">Salvar</button>
+								</span>
+							</div>
+							<!-- /input-group -->
+						</div>
+					</form>
+					<!---->
+					<%for(var j in posts[i].comments){%>
+						<!--Comentados-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<strong>
+									<%=posts[i].comments[j].name%>
+								</strong>
+								<span style="font-style: italic">
+									<%=posts[i].comments[j].createdAt%>
+								</span>
+							</div>
+							<div class="panel-body">
+								<span>
+									<%=posts[i].comments[j].comment%>
+								</span>
+							</div>
+						</div>
+						<%}%>
+				</div>
+				<%}%>
+		</div>
+	</div>
+</body>
+
+</html>
