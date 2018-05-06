@@ -32,7 +32,8 @@ module.exports.save = function (req, res) {
     req.body.imgName = req.files.img.filename;
     req.body.username = req.session.username;
     req.body.name = req.session.name;
-    console.log('Enviando para API ------->');
+    console.log('Enviando para API url --> '+URL_API+'api/posts');
+    console.log(req.body);
 
     var request = require('request');
     request({
