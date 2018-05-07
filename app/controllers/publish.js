@@ -28,10 +28,10 @@ module.exports.save = function (req, res) {
         return;
     }
 
-    var path = require('path');
-    var appDir = path.dirname(require.main.filename);
-    var imgPath = appDir + '/' + req.files.img.file;
-    console.log('-----------------> ' + imgPath);
+    // var path = require('path');
+    // var appDir = path.dirname(require.main.filename);
+    // var imgPath = appDir + '/' + req.files.img.file;
+    console.log('imagem em ----------------------------> '+req.files.img.file);
 
     req.body.imgPath = req.files.img.file;
     req.body.imgName = req.files.img.filename;

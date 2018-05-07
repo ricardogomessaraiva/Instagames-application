@@ -18,10 +18,14 @@ module.exports = function () {
     //Middlewares    
     app.use(expressValidator());
 
+    var path = require('path');
+    var appDir = path.dirname(require.main.filename);
+
     eb.extend(app, {
         upload: true,
         path: '/tmp',
-        allowedPath: '/publish'
+        allowedPath: appDir + '/publish'
+        // allowedPath: '/publish'
     });
 
     app.use(session({
