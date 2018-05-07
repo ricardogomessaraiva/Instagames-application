@@ -33,7 +33,7 @@ module.exports.save = function (req, res) {
     var imgPath = appDir + '/' + req.files.img.file;
     console.log('-----------------> ' + imgPath);
 
-    req.body.imgPath = imgPath;
+    req.body.imgPath = req.files.img.file;
     req.body.imgName = req.files.img.filename;
     req.body.username = req.session.username;
     req.body.name = req.session.name;
