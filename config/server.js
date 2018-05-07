@@ -16,16 +16,12 @@ module.exports = function () {
     app.use(express.static('./app/public'));
 
     //Middlewares    
-    app.use(expressValidator());
-
-    var path = require('path');
-    var appDir = path.dirname(require.main.filename);
+    app.use(expressValidator());    
 
     eb.extend(app, {
         upload: true,
-        path: '/tmp',
-        allowedPath: appDir + '/publish'
-        // allowedPath: '/publish'
+        path: '/tmp',        
+        allowedPath: '/publish'
     });
 
     app.use(session({
