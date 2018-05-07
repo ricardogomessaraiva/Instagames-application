@@ -33,12 +33,11 @@ module.exports.save = function (req, res) {
     var imgPath = appDir + '/' + req.files.img.file;
     console.log('-----------------> ' + imgPath);
 
-    req.body.imgPath = req.files.img.file;
+    req.body.imgPath = imgPath;
     req.body.imgName = req.files.img.filename;
     req.body.username = req.session.username;
     req.body.name = req.session.name;
-    console.log('Enviando para API url --> ' + URL_API + 'api/posts');
-    console.log(req.body);
+    
 
     var request = require('request');
     request({
