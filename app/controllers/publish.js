@@ -1,3 +1,4 @@
+
 module.exports.checkSession = function (req, res) {
     var session = req.session;
     if (session.username == null) {
@@ -17,7 +18,7 @@ module.exports.save = function (req, res) {
     }
 
     req.assert('title', 'Título é um campo obrigatório e deve conter de 4 à 50 carecteres.').len(4, 50);
-    req.assert('description', 'Descrição é um campo obrigatório e deve conter de 4 à 500 carecteres.').len(4, 500);
+    req.assert('description', 'Descrição é um campo obrigatório e deve conter de 4 à 800 carecteres.').len(4, 800);
 
     var validations = req.validationErrors();
 
@@ -27,11 +28,6 @@ module.exports.save = function (req, res) {
         res.render('publish/publish', { user: req.session.name, errors: validations, field: req.body });
         return;
     }
-
-    // var path = require('path');
-    // var appDir = path.dirname(require.main.filename);
-    // var imgPath = appDir + '/' + req.files.img.file;
-    console.log('imagem em ----------------------------> '+req.files.img.file);
 
     req.body.imgPath = req.files.img.file;
     req.body.imgName = req.files.img.filename;

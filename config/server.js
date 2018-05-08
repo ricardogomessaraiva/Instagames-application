@@ -10,6 +10,7 @@ module.exports = function () {
     //public vars
     global.CONFIG = require('config');
     global.URL_API = process.env.NODE_ENV == 'development' ? CONFIG.get('Config.development.url_api') : CONFIG.get('Config.production.url_api');
+    console.log(URL_API);
 
     app.set('view engine', 'ejs');
     app.set('views', './app/views/');
