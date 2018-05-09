@@ -29,18 +29,6 @@ module.exports.save = function (req, res) {
         return;
     }
 
-    // var fs = require('fs');
-    // var FormData = require('form-data');
-    // var form = new FormData();
-
-    // form.append('name', req.session.name);
-    // form.append('username', req.session.username);
-    // form.append('imageName', req.files.img.name);
-    // form.append('buffer', req.files.img.data);
-    // //form.append('file', fs.createReadStream('../images' + req.files.img.name));
-    // console.log('ENVIANDO form-data PARA API ---------->');
-    // console.log(form);    
-
     req.body.imageBuffer = req.files.img.data;
     req.body.imgName = req.files.img.name;
     req.body.username = req.session.username;
@@ -50,8 +38,7 @@ module.exports.save = function (req, res) {
     request({
         url: URL_API + 'api/posts',
         method: "POST",
-        headers: {
-            // 'Content-Type': 'multipart/form-data'
+        headers: {            
             'Content-Type': 'application/json'
         },
         body: req.body,
