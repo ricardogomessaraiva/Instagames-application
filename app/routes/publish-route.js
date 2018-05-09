@@ -6,7 +6,15 @@ module.exports = function (app) {
         publishController.checkSession(req, res);
     });     
 
-    app.post('/publish', function(req, res){                   
+    app.post('/publish', function(req, res){    
+        // console.log(req.files);
+
+        // req.busboy.on('field', function(fieldname, val) {
+        //     // console.log(fieldname, val);
+        //     console.log(val);
+        // });
+    
+        // return;                
         publishController.save(req, res);
     });
     

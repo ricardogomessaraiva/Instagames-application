@@ -2,14 +2,17 @@ const PORT = process.env.PORT || 5000;
 
 module.exports = function () {
     var express = require('express'),
-        eb = require('express-busboy'),
+        busboy = require('connect-busboy'),
+        Busboy = require('busboy'),
         app = express(),
+        bodyParser = require('body-parser'),
         expressValidator = require('express-validator'),
-        session = require('express-session');
+        session = require('express-session'),
+        busboyBodyParser = require('busboy-body-parser');
 
     //public vars
     global.CONFIG = require('config');
-    global.URL_API = process.env.NODE_ENV == 'development' ? CONFIG.get('Config.development.url_api') : CONFIG.get('Config.production.url_api');
+    global.URL_API = process.env.NODE_ENV == 'production' ? CONFIG.get('Config.production.url_api') : CONFIG.get('Config.development.url_api');
     console.log(URL_API);
 
     app.set('view engine', 'ejs');
@@ -17,13 +20,14 @@ module.exports = function () {
     app.use(express.static('./app/public'));
 
     //Middlewares    
-    app.use(expressValidator());    
+    app.use(expressValidator());
 
-    eb.extend(app, {
-        upload: true,
-        path: '/tmp',        
-        allowedPath: '/publish'
-    });
+    app.use(busboy());
+
+    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.json());
+    app.use(busboyBodyParser());
+
 
     app.use(session({
         secret: 'app games',

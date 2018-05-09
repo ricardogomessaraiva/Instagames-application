@@ -1,5 +1,5 @@
 
-module.exports.find = function (req, res) {
+module.exports.find = function (req, res) {        
     req.assert('username', 'Preencha o usuário').notEmpty();
     req.assert('password', 'Preencha a senha').notEmpty();
 
