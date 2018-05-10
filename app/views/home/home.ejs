@@ -4,31 +4,30 @@
 <head>
 	<meta charset="UTF-8">
 
-	<title>Instagames</title>		
+	<title>Instagames</title>
 
 	<!-- bootstrap - link cdn -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">		
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- JQuery -->
-	 <script src="./js/jquery.js"></script>	 
-	 <script src="./js/bootstrap.bundle.min.js"></script>	 
+	<script src="./js/jquery.js"></script>
+	<script src="./js/bootstrap.bundle.min.js"></script>
 	<!-- personal css -->
 	<link href="css/style.css" rel="stylesheet">
 
 </head>
 
-<body>
-
+<body>	
 	<nav class="navbar navbar-default">
 		<div class="container">
-			<div class="col-md-8">
-				<div class="container-fluid">
-					<img alt="Instagram Clone - Versão WEB" style="width: 110px; height: 60px" src="images/controller.jpeg" class="logo2">
-					<img alt="Instagram Clone - Versão WEB" style="width: 250px; height: 80px" src="images/logo_games.png" class="logo2">
-				</div>
+			<div style="width: 140px; float: left; margin-left: -4%">
+				<img alt="Instagram Clone - Versão WEB" style="width: 100%; height: 100%" src="images/controller.jpeg" class="logo2">
+			</div>
+			<div style="width: 220px; float: left">
+				<img alt="Instagram Clone - Versão WEB" style="width: 100%; height: 100%" src="images/logo_games.png" class="logo2">
 			</div>
 			<br>
-			<div class="col-md-4">
-				<div class="container-fluid">
+			<div style="width: 220px; float: right; margin-top: 1%">
+				<div>
 					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 						 aria-expanded="true">
@@ -80,8 +79,8 @@
 						</div>
 
 						<div class="form-group">
-							<div>															
-								<img style="height: 768px; width: 1110px" src="<%=posts[i].imageURL%>">								
+							<div>
+								<img style="height: 50%; width: 100%; " src="<%=posts[i].imageURL%>">
 							</div>
 							<br>
 
@@ -147,8 +146,8 @@
 							</div>
 						</div>
 						<%}%>
-				</div>				
-				<%}%>				
+				</div>
+				<%}%>
 		</div>
 	</div>
 </body>
