@@ -1,2 +1,2 @@
 Readme
-Instagames app
+Instagames application
