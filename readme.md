@@ -5,7 +5,11 @@ Base no core do Instagram, onde o usuário deverá realizar um breve cadastrado,
 O usuário poderá também comentar algum post, bem como dar likes ou deslikes no mesmo.
 
 ## Tecnologias em uso
-Front-end: EJS, html e boostrap.
-Back-end: NodeJS
-Framework: Express
-Comunicação: Acionando Instagames api
+## Front-end: 
+EJS, html e boostrap.
+## Back-end: 
+NodeJS
+## Framework: 
+Express
+## Comunicação: 
+Acionando Instagames api
