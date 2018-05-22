@@ -13,3 +13,5 @@ NodeJS
 Express
 ## Comunicação: 
 Acionando Instagames api
+## Deploy
+https://instagames-app.herokuapp.com
